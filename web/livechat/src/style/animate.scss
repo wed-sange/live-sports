@@ -1,0 +1,17 @@
+.animate-scale-in {
+  animation: scale-in 0.2s ease;
+}
+
+@keyframes scale-in {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.8);
+    transform-origin: center center;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    transform-origin: center center;
+  }
+}

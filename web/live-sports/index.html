@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="screen-orientation" content="landscape" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,viewport-fit=cover"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="format-detection" content="telephone=no, email=no, date=no, address=no" />
+    <script src="https://unpkg.com/@ungap/global-this@0.4.4/min.js"></script>
+    <!-- 直播播放器 -->
+    <script src="/libs/liveplayer-lib.min.js"></script>
+    <script src="/libs/NodePlayer.min.js"></script>
+    <link rel="preload" as="font" href="./src/assets/font/misans/MiSans-Medium.ttf" type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="./src/assets/font/misans/MiSans-Regular.ttf" type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="./src/assets/font/misans/MiSans-Semibold.ttf" type="font/ttf" crossorigin="anonymous" />
+    <!-- <link rel="preload" as="font" href="./src/assets/font/iconfont.ttf" type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="./src/assets/font/iconfont.woff" type="font/woff" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="./src/assets/font/iconfont.woff2" type="font/woff2" crossorigin="anonymous" /> -->
+
+    <title>体育直播</title>
+    <style>
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 1);
+        z-index: 20003;
+      }
+
+      .loading-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .loading-toast-icon {
+        width: 424px;
+        height: 76px;
+        position: fixed;
+        align-items: center;
+        background: rgba(34, 35, 36, 0.5);
+        border-radius: 10px;
+        font-size: 26px;
+        color: white;
+        padding-left: 30px;
+        margin-top: 240px;
+        display: none;
+      }
+
+      .loading-spinner {
+        width: 240px;
+        height: 240px;
+        background: url('/start.gif');
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      .time-loading-status {
+        display: none;
+      }
+
+      .bottom-icon {
+        width: 506px;
+        height: 120px;
+        position: fixed;
+        bottom: 65px;
+        background: url('/start-icon.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class="loading-container">
+      <div class="loading-item">
+        <div class="loading-spinner"></div>
+        <div class="loading-toast-icon">网络不给力，请检查网络设置。</div>
+      </div>
+      <div class="time-loading-status">3</div>
+      <div class="bottom-icon"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+    <script>
+      //倒计时第一次超过15秒提示，后面每隔5秒提示一下
+      let timeCount = 15;
+      let timeInterval;
+      function onClearTimeInterval() {
+        if (timeInterval) {
+          clearInterval(timeInterval);
+          timeInterval = null;
+        }
+      }
+      const timeStatus = document.querySelector('.time-loading-status');
+      const loadingToast = document.querySelector('.loading-toast-icon');
+      const loadingContainer = document.querySelector('.loading-container');
+      function onStartInterval() {
+        timeInterval = setInterval(() => {
+          if (timeStatus.innerHTML != 3) {
+            onClearTimeInterval();
+            return;
+          }
+          timeCount--;
+          if (timeCount <= 0) {
+            onClearTimeInterval();
+            if (loadingToast && (loadingToast.style.display == '' || loadingToast.style.display == 'none')) {
+              loadingToast.style.display = 'flex';
+              loadingContainer.style.display = 'flex';
+              timeCount = 5;
+              onStartInterval();
+            }
+            //1.5秒后关闭提示
+            setTimeout(() => {
+              loadingToast.style.display = 'none';
+            }, 1500);
+          }
+        }, 1000);
+      }
+      onStartInterval();
+      window.onload = function () {
+        document.addEventListener('gesturestart', function (event) {
+          event.preventDefault();
+          return false;
+        });
+        // prevent pinch-zoom for iOS Safari 9~12
+        if (window.GestureEvent && !('touchAction' in document.documentElement.style)) {
+          document.documentElement.addEventListener(
+            'gesturestart',
+            (e) => {
+              e.preventDefault();
+            },
+            { passive: false, capture: true },
+          );
+        }
+
+        if (window.GestureEvent || (navigator.maxTouchPoints & 0xff) > 0) {
+          document.body.addEventListener('click', (e) => {
+            if (!isInteractiveElement(e.target)) e.preventDefault();
+          });
+        }
+
+        function isInteractiveElement(e) {
+          let { nodeName } = e;
+          if (
+            (nodeName === 'A' && e.hasAttribute('href')) ||
+            (['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA'].includes(nodeName) && !e.disabled) ||
+            (nodeName === 'LABEL' && (e.htmlFor || e.querySelector('input,select,textarea') !== null)) ||
+            (['IMG', 'OBJECT'].includes(nodeName) && e.useMap) ||
+            (['AUDIO', 'VIDEO'].includes(nodeName) && e.controls) ||
+            ['SUMMARY', 'IFRAME', 'EMBED'].includes(nodeName)
+          ) {
+            return true;
+          }
+          return e.hasAttribute('tabindex') && e.tabIndex > -1;
+        }
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.sports.springboot.starter.satoken.config.SaTokenConfigure,\
+  org.sports.springboot.starter.satoken.config.CaptchaConfig,\
+  org.sports.springboot.starter.satoken.config.ChatProperties
+

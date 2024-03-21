@@ -1,0 +1,146 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+server:
+  port: 6002
+  servlet:
+    # 应用的访问路径
+    context-path: /apis/live
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 200MB
+  messages:
+    basename: i18n/msg
+  profiles:
+    active: test
+  application:
+    name: sports-live-manage
+  cloud:
+    sentinel:
+      transport:
+        dashboard: localhost:8686
+        port: 8719
+  # Jackson 配置项
+  jackson:
+    # 日期格式化
+    #date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      # 格式化输出
+      indent_output: false
+      # 忽略无法转换的对象
+      fail_on_empty_beans: false
+      write-dates-as-timestamps: true
+    deserialization:
+      # 允许对未知枚举类型默认转为null，例如：传 "" 时转为null
+      read-unknown-enum-values-as-null: true
+      # 允许对象忽略json中不存在的属性
+      fail_on_unknown_properties: false
+rxsy:
+  fastjson:
+    safa-mode: true
+  swagger:
+    contact:
+      name: liu.bin
+    description: sports-live-manage
+    title: sports-live-manage
+    version: 1.0.0
+
+redisson:
+  # redis key前缀
+  keyPrefix:
+  # 线程池数量
+  threads: 4
+  # Netty线程池数量
+  nettyThreads: 8
+  # 单节点配置
+  singleServerConfig:
+    # 客户端名称
+    clientName: ${spring.application.name}
+    # 最小空闲连接数
+    connectionMinimumIdleSize: 8
+    # 连接池大小
+    connectionPoolSize: 32
+    # 连接空闲超时，单位：毫秒
+    idleConnectionTimeout: 10000
+    # 命令等待超时，单位：毫秒
+    timeout: 3000
+    # 发布和订阅连接池大小
+    subscriptionConnectionPoolSize: 50
+springdoc:
+  api-docs:
+    # 是否开启接口文档
+    enabled: true
+  swagger-ui:
+    enabled: true # 2.1 是否开启 Swagger 文档的官方 UI 界面
+    # 持久化认证数据
+    persistAuthorization: true
+  #这里定义了两个分组，可定义多个，也可以不定义
+  group-configs:
+    - group: 1.直播管理
+      packages-to-scan: org.sports.live.manage.web.controller
+knife4j:
+  enable: true # 2.2 是否开启 Swagger 文档的 Knife4j UI 界面
+  setting:
+    language: zh_cn
+# 日志配置
+logging:
+  level:
+    org.springframework.data.mongodb.core: DEBUG
+    org.sports: DEBUG
+    org.springframework: warn
+  config: classpath:logback.xml
+jetcache:
+  statIntervalMinutes: 15
+  areaInCacheName: false
+  local:
+    default:
+      type: linkedhashmap
+      keyConvertor: jackson
+  remote:
+    default:
+      type: redis.springdata
+      keyConvertor: jackson
+      broadcastChannel: projectA
+      valueEncoder: kryo5
+      valueDecoder: kryo5
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+
+#token 权限路径校验 默认全部黑名单需要校验
+sotoken:
+  # 渠道
+  channel: live
+  #白名单 多个,分割
+  white: /common/**, /file/**
+  #live直播角色 多个,分割
+  liveAnchor: #/live/openinfo/**,/live/open
+  #live助手角色 多个,分割
+  liveHelper:
+  #live运营角色 多个,分割
+  liveOperate:
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

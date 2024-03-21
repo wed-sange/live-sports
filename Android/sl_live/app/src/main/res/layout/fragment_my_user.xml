@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/c_f2f3f7"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/my_wd_bj" />
+
+        <RelativeLayout
+            android:id="@+id/rlMyTopyi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dp_15"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="@dimen/dp_20">
+
+            <LinearLayout
+                android:id="@+id/llClickMy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+<!--                <com.xcjh.app.utils.nice.NiceImageView-->
+<!--                    android:id="@+id/ivMyHead"-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:scaleType="fitXY"-->
+<!--                    app:is_circle="true"-->
+<!--                    app:srcCompat="@drawable/icon_my_head" />-->
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivMyHead"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/icon_my_head" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="12dp"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtMyName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/my_txt_click_login"
+                        android:textStyle="bold"
+                        android:textColor="@color/c_37373d"
+                        android:textSize="@dimen/sp_16" />
+
+                    <LinearLayout
+                        android:id="@+id/iiIsShowLeve"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/shape20_e4e6ed"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/dp_5"
+                        android:paddingTop="2dp"
+                        android:paddingRight="@dimen/dp_5"
+                        android:paddingBottom="@dimen/dp_2"
+                        android:visibility="gone">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivIvLevel"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/icon_level_yi" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtMyNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="3dp"
+                            android:text="黄金2"
+                            android:textColor="@color/c_575762"
+                            android:textSize="@dimen/sp_12" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/ivMySet"
+                android:layout_width="@dimen/dp_30"
+                android:layout_height="@dimen/dp_30"
+                android:layout_alignParentEnd="true">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_18"
+                    android:layout_alignParentEnd="true"
+                    app:srcCompat="@drawable/my_set_image_selector" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/rlMyTopyi"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_15"
+            android:orientation="vertical">
+
+            <com.xcjh.app.utils.nice.NiceImageView
+                android:id="@+id/ivMyAdvertising"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerCrop"
+                app:corner_radius="@dimen/dp_8"
+                app:srcCompat="@drawable/banner_my_icon" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_r10"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_15">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_txt_common"
+                    android:textColor="@color/c_37373d"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/sp_14" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/llMyClickSubscribe"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/myAnimation"
+                            android:layout_width="@dimen/dp_35"
+                            android:layout_height="@dimen/dp_35"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/my_wd_dy_icon" />
+<!--                        <com.airbnb.lottie.LottieAnimationView-->
+<!--                            android:id="@+id/myAnimationSubscribe"-->
+<!--                            android:layout_width="@dimen/dp_50"-->
+<!--                            android:layout_height="@dimen/dp_50"-->
+<!--                            app:lottie_autoPlay="false"-->
+<!--                            app:lottie_loop="false"-->
+<!--                            android:visibility="gone"-->
+<!--                            android:scaleType="centerCrop"  />-->
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/my_txt_subscribe"
+
+                            android:textColor="@color/c_37373d"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llMyClickEvents"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/myAnimationActivity"
+                            android:layout_width="@dimen/dp_35"
+                            android:layout_height="@dimen/dp_35"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/my_wd_hdzx_icon" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/events_txt_title"
+                            android:textColor="@color/c_37373d"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llMyClickFollow"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/myAnimationMy"
+                            android:layout_width="@dimen/dp_35"
+                            android:layout_height="@dimen/dp_35"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/my_wd_wdgz_icon" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/follow_txt_title"
+                            android:textColor="@color/c_37373d"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llMyClickHistory"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/myAnimationHistory"
+                            android:layout_width="@dimen/dp_35"
+                            android:layout_height="@dimen/dp_35"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/my_wd_gkls_icon" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/viewing_txt_title"
+                            android:textColor="@color/c_37373d"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+<!--selector_8_whith_f6f7fa-->
+            <RelativeLayout
+                android:id="@+id/rlClickLevel"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@drawable/shape_water_whith_8"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="33dp"
+                        android:layout_height="33dp"
+                        app:srcCompat="@drawable/leve_icon_selector" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:text="@string/my_txt_leve"
+                        android:textColor="@drawable/txt_colour_black_selector"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="5dp"
+                    android:layout_height="@dimen/dp_10"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/wd_gengduo_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlMyClickInvite"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@drawable/shape_water_whith_8"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="33dp"
+                        android:layout_height="33dp"
+                        app:srcCompat="@drawable/share_icon_selector" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:text="@string/my_txt_invite"
+                        android:textColor="@drawable/txt_colour_black_selector"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="5dp"
+                    android:layout_height="@dimen/dp_10"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/wd_gengduo_icon" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlMyClickContact"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_marginTop="@dimen/dp_15"
+                android:background="@drawable/shape_water_whith_8"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_10">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="33dp"
+                        android:layout_height="33dp"
+                        app:srcCompat="@drawable/opinion_icon_selector" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:text="@string/feedback"
+                        android:textColor="@drawable/txt_colour_black_selector"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="5dp"
+                    android:layout_height="@dimen/dp_10"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/wd_gengduo_icon" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

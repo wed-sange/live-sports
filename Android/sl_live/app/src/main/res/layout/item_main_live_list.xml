@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:id="@+id/llLiveSpacing"
+    android:background="@drawable/selector_8_whith_f6f7fa"
+    android:layout_height="142dp">
+<!--shape_r8_ffffff-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="95dp">
+        <com.xcjh.app.utils.nice.NiceImageView
+            android:id="@+id/ivLiveBe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:corner_top_left_radius="@dimen/dp_8"
+            app:corner_top_right_radius="@dimen/dp_8"
+            app:srcCompat="@drawable/bg_basketball_status"
+            android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_alignParentBottom="true">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/main_icon_overlay"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/dp_8"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtLiveCompetition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:singleLine="true"
+                tools:text="中超"
+                android:textColor="@color/c_ffffff"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="8dp"
+                    android:layout_height="9dp"
+                    android:layout_gravity="center"
+
+                    app:srcCompat="@drawable/ic_fire_normal"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtLiveHeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    tools:text="9999+"
+                    android:layout_marginLeft="2dp"
+                    android:textColor="@color/c_ffffff"/>
+
+
+            </LinearLayout>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtLiveIsBroadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_10"
+        android:textColor="@color/c_ffffff"
+        android:paddingRight="@dimen/dp_8"
+        android:paddingLeft="@dimen/dp_8"
+        android:visibility="gone"
+        android:paddingTop="4dp"
+        android:background="@drawable/shape_r33_34a853"
+        android:paddingBottom="4dp"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+
+        android:text="@string/main_txt_on_the_air"/>
+
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_8"
+        android:layout_marginRight="@dimen/dp_8"
+        android:paddingTop="@dimen/dp_8"
+        android:orientation="horizontal">
+
+        <com.xcjh.app.utils.nice.NiceImageView
+            android:id="@+id/ivLiveHead"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:scaleType="centerCrop"
+            app:is_circle="true"
+            app:srcCompat="@drawable/default_anchor_icon"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtLiveTeam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/c_37373d"
+                android:textSize="@dimen/sp_12"
+                android:singleLine="true"
+                tools:text="阿贾克斯 VS 顿涅茨克矿工"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtLiveName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/c_94999f"
+                android:textSize="@dimen/sp_11"
+                android:singleLine="true"
+                tools:text="小小鱼"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

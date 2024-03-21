@@ -1,0 +1,65 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+server:
+  port: 6006
+spring:
+  profiles:
+    active: test
+  application:
+    name: sports-app-gateway
+  cloud:
+    gateway:
+      # 全局的跨域配置
+      globalcors:
+        # 解决options请求被拦截问题
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          # 拦截的请求
+          '[/**]':
+            # 允许跨域的请求
+            allowedOriginPatterns: "*" # spring boot2.4以后的配置
+            # 允许请求中携带的头信息
+            allowedHeaders: "*"
+            # 运行跨域的请求方式
+            allowedMethods: "*"
+            # 是否允许携带cookie
+            allowCredentials: true
+            # 跨域检测的有效期,单位s
+            maxAge: 3600
+      routes:
+        - id: sports-live-manage //直播管理
+          predicates:
+            - Path=/apis/live/**
+          uri: lb://sports-live-manage/apis/live/**
+          #uri: http://192.168.102.6:6002
+        - id: sports-app //用户端
+          predicates:
+            - Path=/apis/app/**
+          uri: lb://sports-app/apis/app/**
+          #uri: http://192.168.102.6:6003
+        - id: sports-chat //IM端
+          predicates:
+            - Path=/ws-sports-chat
+          uri: ws://10.170.2.11:8888/
+          filters:
+            - StripPrefix=1
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+
+# 日志配置
+logging:
+  config: classpath:logback.xml

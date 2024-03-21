@@ -1,0 +1,35 @@
+default:
+  tags:
+    - test
+  cache:
+    key: '$CI_PROJECT_ID-$CI_COMMIT_REF_SLUG'
+    paths:
+      - node_modules/
+stages:
+  - build
+  - deploy
+  - rsync
+
+deploy-dev:
+  stage: build
+  script:
+    - npm install -g pnpm
+    - pnpm install
+    - pnpm build:dev
+    - rsync -av --delete dist  192.168.101.180:/root/web/live-sports/ --progress
+  only:
+    - dev_1.0
+  when: manual
+
+deploy-env:
+  stage: build
+  script:
+    - npm install -g pnpm
+    - pnpm install
+    - pnpm build:env
+    - tar -zcf live-sports.tgz dist
+    - rsync -av --delete live-sports.tgz  sports_aws:/home/web/live-sports.tgz --progress
+    - ssh sports_aws "/home/run/web.sh live-sports"
+  only:
+    - dev_1.0
+  when: manual

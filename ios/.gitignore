@@ -1,0 +1,8 @@
+build/
+DerivedData/
+xcuserdata/
+.DS_Store
+Pods/
+Podfile.lock
+*.xcworkspace
+sportlive/

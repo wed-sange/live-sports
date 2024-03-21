@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+    </data>
+
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:background="@color/c_181819"
+         android:orientation="vertical">
+
+
+     </LinearLayout>-->
+    <!--主要界面 android:background="@drawable/icon_home_bg"-->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/c_181819">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBayLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/trans"
+            android:orientation="vertical"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/lltFold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <LinearLayout
+                    android:id="@+id/llt2Fold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_scrollFlags="scroll">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="234dp"
+                        tools:ignore="UselessParent">
+
+                        <!--背景图片-->
+
+                        <!--视频直播-->
+                        <ImageView
+                            android:id="@+id/ivMatchBg"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            tools:background="@drawable/bg_status_football"
+                            tools:ignore="ContentDescription" />
+
+                        <RelativeLayout
+                            android:id="@+id/rltVideo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                                android:visibility="gone">
+
+                            <View
+                                android:id="@+id/viewTopBg"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:background="@color/c_181819" />
+
+                            <com.xcjh.app.view.balldetail.MatchVideoPlayer
+                                android:id="@+id/videoPlayer"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_below="@id/viewTopBg"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/tvSignal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="21dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginEnd="@dimen/dp_12"
+                                android:layout_marginBottom="@dimen/dp_35"
+                                android:background="@drawable/shape_background_signal"
+                                android:backgroundTint="@color/white25_to_dark_selector"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/dp_8"
+                                android:text="@string/signal_source"
+                                android:textColor="@color/c_ffffff"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+
+                        <!--比赛信息和状态-->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/cslMatchInfo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/marqueeView"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/tvSignal2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="21dp"
+                                android:layout_marginBottom="@dimen/dp_15"
+                                android:background="@drawable/shape_background_signal"
+                                android:backgroundTint="@color/white25_to_dark_selector"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/dp_8"
+                                android:text="@string/signal_source"
+                                android:textColor="@color/c_ffffff"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent" />
+                            <!--比赛比分 vs -->
+                            <TextView
+                                android:id="@+id/tvMatchVs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="34dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/shape5_line_e8eaef"
+                                android:gravity="center"
+                                android:minWidth="69dp"
+                                android:paddingHorizontal="@dimen/dp_8"
+                                android:text="@string/vs"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toTopOf="@id/tvSignal2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintVertical_chainStyle="packed" />
+
+
+                            <!--比赛状态 -->
+                            <LinearLayout
+                                android:id="@+id/lltMatchStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center"
+                                android:orientation="horizontal"
+                                app:layout_constraintBottom_toTopOf="@id/tvMatchVs"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvMatchStatus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#DEFFFFFF"
+                                    android:textSize="@dimen/sp_10"
+                                    android:visibility="visible"
+                                    tools:text="未开始" />
+
+                            </LinearLayout>
+
+                            <!--home-->
+                            <androidx.constraintlayout.utils.widget.ImageFilterView
+                                android:id="@+id/ivHomeIcon"
+                                android:layout_width="@dimen/dp_40"
+                                android:layout_height="@dimen/dp_40"
+                                android:layout_marginEnd="@dimen/dp_45"
+                                app:layout_constraintBottom_toBottomOf="@id/tvMatchVs"
+                                app:layout_constraintEnd_toStartOf="@id/tvMatchVs"
+                                app:layout_constraintTop_toTopOf="@id/tvMatchVs"
+                                app:layout_constraintVertical_chainStyle="packed"
+                                app:round="@dimen/dp_2"
+                                tools:ignore="ContentDescription"
+                                tools:src="@drawable/default_team_logo" />
+
+                            <TextView
+                                android:id="@+id/tvHomeName"
+                                android:layout_width="136dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:textColor="@color/white"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toEndOf="@id/ivHomeIcon"
+                                app:layout_constraintStart_toStartOf="@id/ivHomeIcon"
+                                app:layout_constraintTop_toBottomOf="@id/ivHomeIcon"
+                                tools:text="home" />
+
+                            <!--away-->
+                            <androidx.constraintlayout.utils.widget.ImageFilterView
+                                android:id="@+id/ivAwayIcon"
+                                android:layout_width="@dimen/dp_40"
+                                android:layout_height="@dimen/dp_40"
+                                android:layout_marginStart="@dimen/dp_45"
+                                app:layout_constraintBottom_toBottomOf="@id/tvMatchVs"
+                                app:layout_constraintStart_toEndOf="@id/tvMatchVs"
+                                app:layout_constraintTop_toTopOf="@id/tvMatchVs"
+                                tools:ignore="ContentDescription"
+                                tools:src="@drawable/default_team_logo" />
+
+                            <TextView
+                                android:id="@+id/tvAwayName"
+                                android:layout_width="136dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:textColor="@color/white"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toEndOf="@id/ivAwayIcon"
+                                app:layout_constraintStart_toStartOf="@id/ivAwayIcon"
+                                app:layout_constraintTop_toBottomOf="@id/ivAwayIcon"
+                                tools:text="away" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <!--无主播状态-->
+                        <LinearLayout
+                            android:id="@+id/lltNoLive"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/marqueeView"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:layout_width="@dimen/dp_24"
+                                    android:layout_height="@dimen/dp_1"
+                                    android:background="#E8EAEF" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/dp_5"
+                                    android:text="@string/anchor_no_live"
+                                    android:textColor="@color/c_ffffff"
+                                    android:textSize="@dimen/sp_13"
+                                    android:textStyle="bold" />
+
+                                <View
+                                    android:layout_width="@dimen/dp_24"
+                                    android:layout_height="@dimen/dp_1"
+                                    android:background="#E8EAEF" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvSignal3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="21dp"
+                                android:layout_marginTop="@dimen/dp_10"
+                                android:layout_marginBottom="@dimen/dp_35"
+                                android:background="@drawable/shape_background_signal"
+                                android:backgroundTint="@color/white25_to_dark_selector"
+                                android:gravity="center"
+                                android:paddingHorizontal="@dimen/dp_8"
+                                android:text="@string/signal_source"
+                                android:textColor="@color/c_ffffff"
+                                android:textSize="@dimen/sp_12"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+                        <!--播放异常-->
+                        <LinearLayout
+                            android:id="@+id/lltLiveError"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@id/marqueeView"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/dp_5"
+                                android:text="加载失败,请重试或切换信号"
+                                android:textColor="@color/c_ffffff"
+                                android:textSize="@dimen/sp_13"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_15"
+                                android:layout_marginBottom="@dimen/dp_30"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvReload"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="25dp"
+                                    android:background="@drawable/shape_background_signal"
+                                    android:backgroundTint="@color/white25_to_dark_selector"
+                                    android:gravity="center"
+                                    android:paddingHorizontal="@dimen/dp_8"
+                                    android:text="重新加载"
+                                    android:textColor="@color/c_ffffff"
+                                    android:textSize="@dimen/sp_12"
+                                    android:textStyle="bold" />
+<!--                                点击信号源-->
+                                <TextView
+                                    android:id="@+id/tvSignal4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="25dp"
+                                    android:layout_marginStart="@dimen/dp_25"
+                                    android:background="@drawable/shape_background_signal"
+                                    android:backgroundTint="@color/white25_to_dark_selector"
+                                    android:gravity="center"
+                                    android:paddingHorizontal="@dimen/dp_14"
+                                    android:text="@string/signal_source"
+                                    android:textColor="@color/c_ffffff"
+                                    android:textSize="@dimen/sp_12"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <!--视频下边的广告-->
+                        <TextView
+                            android:id="@+id/marqueeView"
+                            android:layout_width="match_parent"
+                            android:layout_height="27dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@drawable/bg_shape_marquee"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="start|center_vertical"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:paddingStart="@dimen/dp_12"
+                            android:paddingEnd="@dimen/dp_12"
+                            android:scrollHorizontally="true"
+                            android:singleLine="true"
+                            android:textColor="@color/c_ffffff"
+                            android:textSize="@dimen/sp_12"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
+
+                    <!--ad -->
+                    <ImageView
+                        android:id="@+id/ivShowAd"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:scaleType="fitXY"
+                        android:visibility="gone"
+                        tools:src="@drawable/ic_ad_def" />
+                    <!--主播信息-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cslAnchor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <com.xcjh.base_lib.utils.view.CircleImageView
+                            android:id="@+id/iv_tab_anchor_avatar"
+                            android:layout_width="@dimen/dp_30"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_marginStart="@dimen/dp_12"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:src="@drawable/default_anchor_icon" />
+
+                        <TextView
+                            android:id="@+id/tv_tab_anchor_nick"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/dp_5"
+                            android:textColor="@color/c_ffffff"
+                            android:textSize="@dimen/sp_12"
+                            app:layout_constraintBottom_toTopOf="@id/tv_detail_tab_anchor_fans"
+                            app:layout_constraintEnd_toStartOf="@id/tv_tab_anchor_chat"
+                            app:layout_constraintStart_toEndOf="@id/iv_tab_anchor_avatar"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            tools:text="henrrery noway" />
+
+                        <TextView
+                            android:id="@+id/tv_detail_tab_anchor_fans"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_4"
+                            android:drawableStart="@drawable/ic_gray_fire_hot"
+                            android:drawablePadding="4dp"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/c_94999f"
+                            android:textSize="@dimen/sp_10"
+                            android:textStyle="normal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@id/tv_tab_anchor_nick"
+                            app:layout_constraintTop_toBottomOf="@id/tv_tab_anchor_nick"
+                            tools:text="222" />
+
+                        <TextView
+                            android:id="@+id/tv_tab_anchor_chat"
+                            android:layout_width="@dimen/dp_60"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_marginEnd="@dimen/dp_10"
+                            android:background="@drawable/shape_red_pressed_r20"
+                            android:backgroundTint="@color/green_to_dark_selector"
+                            android:gravity="center"
+                            android:text="@string/chat"
+                            android:textColor="@color/c_ffffff"
+                            android:textSize="@dimen/sp_12"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_tab_anchor_avatar"
+                            app:layout_constraintEnd_toStartOf="@id/tv_tab_anchor_follow"
+                            app:layout_constraintTop_toTopOf="@id/iv_tab_anchor_avatar" />
+
+                        <TextView
+                            android:id="@+id/tv_tab_anchor_follow"
+                            android:layout_width="@dimen/dp_60"
+                            android:layout_height="@dimen/dp_24"
+                            android:layout_marginEnd="@dimen/dp_12"
+                            android:gravity="center"
+                            android:textColor="@color/c_pb_bar"
+                            android:textSize="@dimen/sp_12"
+                            app:layout_constraintBottom_toBottomOf="@id/iv_tab_anchor_avatar"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="@id/iv_tab_anchor_avatar"
+                            tools:text="关注" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_1"
+                            android:layout_marginTop="@dimen/dp_12"
+                            android:background="@color/c_27272a"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/iv_tab_anchor_avatar" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </LinearLayout>
+                <!--顶部悬停状态-->
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_top_football"
+                    app:layout_collapseMode="pin">
+
+                    <RelativeLayout
+                        android:id="@+id/rltTop"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@drawable/shape_gradient_detail_top"
+                        android:gravity="center_vertical">
+                        <!--返回键 一直显示-->
+                        <ImageView
+                            android:id="@+id/ivBack"
+                            android:layout_width="@dimen/dp_44"
+                            android:layout_height="@dimen/dp_44"
+                            android:layout_marginStart="5dp"
+                            android:onClick="finishTopClick"
+                            android:padding="0dp"
+                            android:src="@drawable/ic_back"
+                            app:tint="@color/white_to_dark_selector"
+                            tools:ignore="ContentDescription" />
+
+                        <!--折叠后显示-->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layoutTopFold"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginEnd="50dp"
+                            android:alpha="1"
+                            tools:ignore="RelativeOverlap">
+
+                            <!--比赛状态-->
+                            <LinearLayout
+                                android:id="@+id/lltTopMatchStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvTopMatchStatus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/shape_background_signal"
+                                    android:paddingHorizontal="@dimen/dp_8"
+                                    android:paddingVertical="@dimen/dp_2"
+                                    android:textColor="@color/white"
+                                    android:textSize="12sp"
+                                    tools:text="已完赛" />
+
+                            </LinearLayout>
+                            <!--主队-->
+                            <TextView
+                                android:id="@+id/tvTopHomeScore"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:textColor="@color/white"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/lltTopMatchStatus"
+                                app:layout_constraintEnd_toStartOf="@id/lltTopMatchStatus"
+                                app:layout_constraintStart_toEndOf="@id/ivTopHomeIcon"
+                                app:layout_constraintTop_toTopOf="@id/lltTopMatchStatus"
+                                tools:text="300" />
+
+                            <androidx.constraintlayout.utils.widget.ImageFilterView
+                                android:id="@+id/ivTopHomeIcon"
+                                android:layout_width="@dimen/dp_30"
+                                android:layout_height="@dimen/dp_30"
+                                android:layout_marginStart="15dp"
+                                android:src="@drawable/ic_default_bg"
+                                app:layout_constraintBottom_toBottomOf="@id/lltTopMatchStatus"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/lltTopMatchStatus"
+                                tools:ignore="ContentDescription" />
+
+                            <!--客队-->
+                            <TextView
+                                android:id="@+id/tvTopAwayScore"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/sp_15"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/lltTopMatchStatus"
+                                app:layout_constraintEnd_toStartOf="@id/ivTopAwayIcon"
+                                app:layout_constraintStart_toEndOf="@id/lltTopMatchStatus"
+                                app:layout_constraintTop_toTopOf="@id/lltTopMatchStatus"
+                                tools:text="200" />
+
+                            <androidx.constraintlayout.utils.widget.ImageFilterView
+                                android:id="@+id/ivTopAwayIcon"
+                                android:layout_width="@dimen/dp_30"
+                                android:layout_height="@dimen/dp_30"
+                                android:layout_marginEnd="15dp"
+                                android:src="@drawable/ic_default_bg"
+                                app:layout_constraintBottom_toBottomOf="@id/lltTopMatchStatus"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/lltTopMatchStatus"
+                                tools:ignore="ContentDescription" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <!--不折叠时显示 -->
+                        <RelativeLayout
+                            android:id="@+id/layoutNotFold"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="50dp"
+                            android:layout_marginEnd="50dp"
+                            android:alpha="1"
+                            android:orientation="horizontal"
+                            tools:ignore="RelativeOverlap">
+                            <!--直播中标题 直播中会隐藏，点击显示-->
+                            <TextView
+                                android:id="@+id/topLiveTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:singleLine="true"
+                                android:textColor="@color/c_ffffff"
+                                android:textSize="@dimen/sp_14"
+                                android:textStyle="bold"
+                                android:visibility="gone"
+                                tools:text="中超 上海申花VS梅州客家" />
+                            <!--纯净流标题-->
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/topNoLiveTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+                                <!--赛事信息-->
+                                <TextView
+                                    android:id="@+id/tvCompetitionName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_12"
+                                    android:textStyle="bold"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    tools:text="世界杯" />
+
+                                <TextView
+                                    android:id="@+id/tvMatchTime"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_12"
+                                    android:textStyle="bold"
+                                    app:layout_constraintEnd_toStartOf="@id/tvMatchTimeS"
+                                    app:layout_constraintHorizontal_chainStyle="packed"
+                                    app:layout_constraintStart_toStartOf="@id/tvCompetitionName"
+                                    app:layout_constraintTop_toBottomOf="@id/tvCompetitionName"
+                                    tools:text="2008/8/8" />
+
+                                <TextView
+                                    android:id="@+id/tvMatchTimeS"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/sp_12"
+                                    android:textStyle="bold"
+                                    android:visibility="gone"
+                                    app:layout_constraintEnd_toEndOf="@id/tvCompetitionName"
+                                    app:layout_constraintStart_toEndOf="@id/tvMatchTime"
+                                    app:layout_constraintTop_toTopOf="@id/tvMatchTime"
+                                    tools:text="'" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </RelativeLayout>
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivMatchVideo"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:visibility="gone"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/tvToShare"
+                            android:layout_marginRight="8dp"
+                            app:srcCompat="@drawable/detaic_tv_icon"/>
+                        <!--分享 直播中会隐藏，点击在显示处理-->
+                        <ImageView
+                            android:id="@+id/tvToShare"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/dp_10"
+                            android:src="@drawable/icon_share"
+                            app:tint="@color/white_to_dark_selector" />
+
+                    </RelativeLayout>
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <net.lucode.hackware.magicindicator.MagicIndicator
+                android:id="@+id/magic_indicator"
+                android:layout_width="387dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/c_181819" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/c_27272a" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

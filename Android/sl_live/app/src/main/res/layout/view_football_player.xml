@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50">
+
+        <ImageView
+            android:id="@+id/ivPlayer"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/icon_team_red" />
+
+        <TextView
+            android:id="@+id/tvPlayerNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ivPlayer"
+            android:layout_alignBottom="@id/ivPlayer"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_12"
+            android:textStyle="bold"
+            tools:text="37" />
+
+        <TextView
+            android:id="@+id/tvPlayerName"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivPlayer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_5"
+            android:gravity="center"
+            android:singleLine="true"
+            android:textColor="@color/c_AEBAB1"
+            android:textSize="@dimen/sp_10"
+            tools:text="周正凯123456" />
+    </RelativeLayout>
+</layout>

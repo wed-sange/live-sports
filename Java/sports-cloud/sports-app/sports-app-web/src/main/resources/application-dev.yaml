@@ -1,0 +1,107 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ******:8848
+        enabled: true
+        username: nacos
+        password: nacos
+        group: sports
+        namespace: 082d2278-d937-48c5-97a1-e9408058e6e7
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://******:3304/sports?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&serverTimezone=GMT%2B8
+  #邮箱配置
+  mail:
+    #邮箱服务器地址 (局网本地设置hosts)mail.abc.com
+    host: ******
+    #邮箱账号
+    username: ******
+    #邮箱授权码
+    password: ******
+    #默认编码
+    default-encoding: utf-8
+    #中文主题
+    zhSubject: "体育直播账号注册"
+    #英文主题
+    enSubject: "Sports Live Streaming Account Registration"
+  redis:
+    # 地址
+    host: ******
+    # 端口，默认为6379
+    port: 6379
+    # 数据库索引
+    database: 6
+    # 密码(如没有密码请注释掉)
+    # password:
+    # 连接超时时间
+    timeout: 10s
+    # 是否开启ssl
+    ssl: false
+edi:
+  basketball:
+    user: ******
+    secret: ******
+    baseUrl: ******
+  football:
+    user: admin
+    secret: d405dc6c8a2c8b511016cc5c1743eb33
+    baseUrl: ******
+
+jetcache:
+  statIntervalMinutes: 15
+  areaInCacheName: false
+  local:
+    default:
+      type: linkedhashmap
+      keyConvertor: jackson
+  remote:
+    default:
+      type: redis.springdata
+      keyConvertor: jackson
+      broadcastChannel: projectA
+      valueEncoder: kryo5
+      valueDecoder: kryo5
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+storage:
+  enabled: true
+  config:
+    # 存储类型：AMAZON、ALIYUN、TENCENT、QINIU、HUAWEI、MINIO
+    type: AMAZON
+    domain: https://******.cloudfront.net
+  amazon:
+    accessKey: ******
+    secretKey: ******
+    bucketName: ******
+    region: ******
+
+# 验证码参数
+aj:
+  captcha:
+    #水印去除
+    water-mark:
+    # 接口请求次数一分钟限制是否开启 true|false
+    req-frequency-limit-enable: false
+    # get接口一分钟内请求数限制
+    req-get-minute-limit: 30

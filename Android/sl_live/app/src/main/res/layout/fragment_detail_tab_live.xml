@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.drake.brv.PageRefreshLayout
+        android:id="@+id/page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvRecommend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="com.drake.brv.layoutmanager.HoverGridLayoutManager"
+            app:spanCount="2"
+            tools:listitem="@layout/item_main_live_list"
+            android:overScrollMode="never"
+            android:layout_margin="@dimen/dp_12" />
+
+    </com.drake.brv.PageRefreshLayout>
+</layout>

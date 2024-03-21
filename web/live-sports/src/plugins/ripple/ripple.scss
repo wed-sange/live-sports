@@ -1,0 +1,24 @@
+.ripple-box {
+  position: relative;
+  .ripple-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    transform: translateZ(0);
+    pointer-events: none;
+    border-radius: inherit;
+    .ripple-element {
+      position: absolute;
+      transition: opacity, transform 0ms linear;
+      transform: scale(0.2);
+      pointer-events: none;
+      border-radius: 50%;
+      will-change: transform;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+}

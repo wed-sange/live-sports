@@ -1,0 +1,74 @@
+@import "./transition";
+@import "./element-plus";
+@import "./sidebar";
+@import "./dark";
+@import "./animate";
+
+/* 自定义全局 CssVar */
+:root {
+  /* 左侧菜单展开、收起动画时长 */
+  --pure-transition-duration: 0.3s;
+
+  // font-family: "PingFang SC";
+}
+
+/* 灰色模式 */
+.html-grey {
+  filter: grayscale(100%);
+}
+
+/* 色弱模式 */
+.html-weakness {
+  filter: invert(80%);
+}
+
+.custom-confirm.el-message-box {
+  --el-messagebox-padding-primary: 24px;
+
+  padding-bottom: 21px;
+
+  .el-message-box__title {
+    font: 600 22px / 24px "PingFang SC";
+    color: #1a1a1a;
+  }
+
+  .el-message-box__close {
+    --el-color-info: #d0d0d0;
+  }
+
+  .el-message-box__message {
+    font: 400 14px / 22px "PingFang SC";
+    color: #1a1a1a;
+  }
+
+  .el-button {
+    --el-button-text-color: #1a1a1a;
+    --el-button-hover-text-color: #1a1a1a;
+    --el-button-active-text-color: #1a1a1a;
+    --el-button-hover-border-color: #4f4f4f;
+    --el-button-active-border-color: #4f4f4f;
+    --el-button-hover-bg-color: transparent;
+    --el-button-active-bg-color: transparent;
+
+    width: 76px;
+  }
+
+  .el-button--primary {
+    --el-button-text-color: #fff;
+    --el-button-hover-text-color: #fff;
+    --el-button-active-text-color: #fff;
+    --el-button-hover-bg-color: #128831;
+    --el-button-active-bg-color: #128831;
+    --el-button-hover-border-color: #128831;
+    --el-button-active-border-color: #128831;
+  }
+}
+
+.el-popper.table-tooltip-popper {
+  max-width: 500px;
+}
+
+.el-overlay {
+  background: rgb(0 0 0 / 70%);
+  backdrop-filter: blur(2px);
+}

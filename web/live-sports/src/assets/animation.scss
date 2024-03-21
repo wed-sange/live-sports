@@ -1,0 +1,114 @@
+$page-animation-time: 0.25s;
+
+/* 路由切换动画 */
+
+/* fade-transform */
+
+.page-fade-leave-active,
+.page-fade-enter-active {
+  transition: all 0.25s;
+}
+
+/* 可能为enter失效，拆分为 enter-from和enter-to */
+.page-fade-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.page-fade-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-fade-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.page-right-enter-active,
+.page-right-leave-active,
+.page-left-enter-active,
+.page-left-leave-active {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  transition: all $page-animation-time;
+  backface-visibility: hidden;
+}
+
+.page-right-enter-active {
+  animation: right-in $page-animation-time;
+}
+
+.page-right-leave-active {
+  animation: left-out $page-animation-time;
+}
+
+.page-left-enter-active {
+  animation: left-in $page-animation-time;
+}
+
+.page-left-leave-active {
+  animation: right-out $page-animation-time;
+}
+
+@keyframes left-in {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes left-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0%, 0, 0);
+  }
+
+  to {
+    opacity: 0.4;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes right-in {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes right-out {
+  from {
+    opacity: 1;
+    transform: translate3d(0%, 0, 0);
+  }
+
+  to {
+    opacity: 0.4;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.page-normal-leave-active,
+.page-normal-leave-to {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}

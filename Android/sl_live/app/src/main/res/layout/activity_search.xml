@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/c_f2f3f7"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rlSearchTitle"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:background="@color/c_ffffff" >
+<!--        TYPE_CLASS_TEXT-->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSearchInput"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="@dimen/dp_60"
+            android:background="@drawable/shape_r30_f2f3f7"
+            android:drawablePadding="@dimen/dp_12"
+            android:hint="@string/search_hint_interested"
+             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:imeOptions="flagNoExtractUi|actionSearch"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_12"
+            android:paddingEnd="40dp"
+            android:singleLine="true"
+            android:textColor="@color/c_37373d"
+            android:textColorHint="@color/c_94999f"
+            android:textCursorDrawable="@drawable/shape_et_cursor_blue"
+            android:textSize="@dimen/sp_16"
+            app:drawableStartCompat="@drawable/ic_search_new"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivClear"
+            tools:visibility="visible"
+            android:visibility="gone"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="70dp"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentBottom="true"
+            app:srcCompat="@drawable/ic_close" />
+<!--        cancel-->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtSearchClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@drawable/search_txt_selector"
+            android:textSize="@dimen/sp_16"
+            android:gravity="center"
+            android:paddingRight="12dp"
+            android:layout_marginBottom="18dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/cancel"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/c_f2f3f7"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <LinearLayout
+            android:id="@+id/llSearchShow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/c_ffffff"
+            android:paddingLeft="12dp"
+            android:paddingRight="@dimen/dp_12"
+            android:paddingTop="@dimen/dp_15"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginBottom="@dimen/dp_15"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/c_37373d"
+                    android:text="@string/search_txt_hot_race"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcHotRace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_search_hot_title"
+                android:overScrollMode="never" />
+
+        </LinearLayout>
+        <com.drake.statelayout.StateLayout
+            android:id="@+id/state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcSearchList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="@dimen/dp_12"
+                tools:listitem="@layout/item_main_live_list"
+                android:overScrollMode="never" />
+        </com.drake.statelayout.StateLayout>
+
+    </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

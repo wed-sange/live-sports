@@ -1,0 +1,11 @@
+import IconClear from './IconClear.vue';
+import IconDelete from './IconDelete.vue';
+import IconSearch from './IconSearch.vue';
+import IconNotify from './IconNotify.vue';
+import IconFace from './IconFace.vue';
+import IconClose from './IconClose.vue';
+import IconPlus from './IconPlus.vue';
+import IconSend from './IconSend.vue';
+import IconCamera from './IconCamera.vue';
+import IconPhoto from './IconPhoto.vue';
+export { IconClear, IconDelete, IconSearch, IconNotify, IconFace, IconClose, IconPlus, IconSend, IconCamera, IconPhoto };

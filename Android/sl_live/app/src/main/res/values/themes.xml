@@ -1,0 +1,44 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="App.Theme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:textAllCaps">false</item>
+        <item name="colorPrimary">@color/blue_ed</item>
+        <item name="colorPrimaryDark">@color/blue_ed</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorAccent">@color/c_37373d</item>
+        <item name="android:windowBackground">@color/base_bg</item>
+        <!--  <item name="android:windowAnimationStyle">@android:style/Animation.Activity</item>-->
+        <item name="android:windowAnimationStyle">@style/activityAnim</item>
+        <!-- 设置底部导航栏半透明，默认false黑色，设置true半透明 -->
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!-- Android 5.0+，设置状态栏全透明透明 -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- true: status栏的图标和文字为黑色；false: status栏的图标和文字为白色 -->
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!--启动页-->
+    <!--SplashScreen兼容库，静态背景，android5.0 ~ android11-->
+    <style name="Theme.Starting" parent="App.Theme">
+        <item name="android:windowBackground">@drawable/chat_splash_background</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:navigationBarColor">@color/trans</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- Android 5.0+，设置状态栏全透明透明 -->
+        <item name="android:windowFullscreen">true</item>
+        <!--  <item name="android:windowAnimationStyle">@style/Animation_Splash</item>-->
+        <item name="android:windowAnimationStyle">@style/Animation_Splash</item>
+        <item name="android:windowTranslucentStatus">true</item> <!-- 设置状态栏半透明——解除注释 -->
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="o_mr1">shortEdges
+        </item>
+    </style>
+
+    <style name="Theme.MyApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MyApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+</resources>

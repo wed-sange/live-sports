@@ -1,0 +1,49 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.sports.admin.manage.service.converter;
+
+
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+import org.sports.admin.manage.dao.entity.LiveUserDO;
+import org.sports.admin.manage.service.vo.LiveUserOpenVO;
+import org.sports.admin.manage.service.vo.LiveUserVO;
+
+import java.util.List;
+
+/**
+ * @描述: 直播用户VO和DO对象转换器
+ * @版权: Copyright (c) 2023
+
+
+ * @版本: 1.0
+ * @创建日期: 2023/7/19
+ * @创建时间: 14:22
+ */
+@Mapper
+public interface LiveUserConvert {
+
+    LiveUserConvert INSTANCE = Mappers.getMapper(LiveUserConvert.class);
+
+    LiveUserDO convertToDo(LiveUserVO bean);
+
+    LiveUserVO convertToVo(LiveUserDO bean);
+    LiveUserOpenVO convertToOpenVo(LiveUserDO bean);
+
+    List<LiveUserVO> convertToListVo(List<LiveUserDO> beans);
+}

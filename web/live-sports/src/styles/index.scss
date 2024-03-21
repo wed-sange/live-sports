@@ -1,0 +1,199 @@
+.van-toast.custom-toast-success {
+  --van-toast-default-width: 620px;
+  --van-toast-max-width: none;
+  --van-toast-default-min-height: 328px;
+  --van-toast-background: #14142a;
+  --van-toast-default-padding: 0 24px;
+  --van-toast-radius: 16px;
+  box-shadow: 0px 10px 20px 20px rgba(0, 0, 0, 0.25);
+  .van-icon.van-icon-custom-icon-success {
+    width: 128px;
+    height: 128px;
+    background: url('@/assets/img/common/toast_icon_success.svg') no-repeat, transparent;
+    background-size: auto 100%;
+    background-position: center;
+  }
+  .van-toast__text {
+    --van-padding-xs: 40px;
+    font: 500 32px / normal 'PingFang HK';
+    color: #f5f5f5;
+  }
+}
+.van-toast.custom-toast {
+  --van-toast-text-padding: 20px 30px;
+  --van-toast-background: rgba(34, 35, 36, 0.5);
+  --van-toast-radius: 16px;
+  .van-toast__text {
+    font: 400 26px / normal 'PingFang SC';
+    color: #fff;
+  }
+}
+.van-toast.custom-toast-live {
+  --van-toast-text-padding: 20px 30px;
+  --van-toast-background: #3e3e3e;
+  --van-toast-radius: 8px;
+  .van-toast__text {
+    font: 400 26px / normal 'PingFang SC';
+    color: #fff;
+  }
+}
+.van-toast.custom-toast-white {
+  --van-toast-text-padding: 20px 30px;
+  --van-toast-background: #fff;
+  --van-toast-radius: 16px;
+  .van-toast__text {
+    font: 400 26px / normal 'PingFang SC';
+    color: #000;
+  }
+}
+.van-toast.van-toast--loading.custom-loading-toast {
+  --van-toast-default-width: 210px;
+  --van-toast-default-min-height: 210px;
+  .van-toast__text {
+    font: 400 26px / normal 'PingFang HK';
+    color: #f5f5f5;
+    white-space: nowrap;
+  }
+}
+
+.van-dialog.custom-dialog-confirm {
+  --van-dialog-width: 540px;
+  --van-dialog-background: #fff;
+  --van-dialog-radius: 28px;
+  --van-dialog-header-padding-top: 24px;
+  font: 400 30px / 44px 'PingFang SC';
+  letter-spacing: -0.408px;
+  padding-top: 36px;
+  top: 588px;
+  transform: translateY(0);
+  .van-dialog__header {
+    color: #000000;
+  }
+  .van-dialog__content {
+    min-height: auto;
+    font: inherit;
+  }
+  .van-dialog__message {
+    padding: 34px 32px 70px;
+    color: #000000;
+    word-wrap: break-word;
+    font: inherit;
+  }
+  .van-dialog__footer {
+    padding: 0;
+    &::after {
+      --van-border-color: #e8eaef;
+    }
+    .van-button {
+      --van-button-default-background: #fff;
+      --van-button-default-color: #94999f;
+      --van-dialog-button-height: 88px;
+      --van-button-radius: 0;
+      border: none;
+      font: 400 30px / 44px 'PingFang SC';
+      letter-spacing: -0.408px;
+      .van-button__text {
+        font: inherit;
+      }
+      &::after {
+        --van-border-color: #e8eaef;
+      }
+      &.van-dialog__confirm {
+        --van-button-default-background: #fff;
+        --van-dialog-confirm-button-text-color: #34a853;
+      }
+    }
+  }
+}
+
+.sports-tip-bar-box {
+  display: flex;
+  align-items: center;
+}
+.sports-tip-bar__text {
+  flex: 0 0 auto;
+  width: auto;
+  font: 500 26px / normal 'PingFang SC';
+  color: #34a853;
+}
+.sports-tip-bar__line {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: space-around;
+  .sports-tip-bar__line--bar {
+    display: inline-block;
+    width: 3px;
+    height: 100%;
+    background: #34a853;
+    border-radius: 4px;
+    transform-origin: 0 100%;
+    animation: sportsTipBarRunning ease-in-out 500ms infinite alternate-reverse;
+    &:nth-child(1) {
+      animation-delay: -700ms;
+    }
+    &:nth-child(2) {
+      animation-delay: -300ms;
+    }
+    &:nth-child(3) {
+      animation-delay: -400ms;
+    }
+    &:nth-child(4) {
+      animation-delay: -600ms;
+    }
+  }
+}
+
+@keyframes sportsTipBarRunning {
+  0% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(0.2);
+  }
+}
+
+@keyframes sportsStateOpacity {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes chatLoadingCircle {
+  0% {
+    stroke-dasharray: 3, 126;
+    stroke-dashoffset: -125;
+  }
+  // 10% {
+  //   stroke-dasharray: 3,150;
+  //   stroke-dashoffset: -122;
+  // }
+  65% {
+    stroke-dasharray: 40, 150;
+  }
+  100% {
+    stroke-dasharray: 40, 150;
+    stroke-dashoffset: 40;
+  }
+}
+.chat-loading-box {
+  font-size: 0;
+  vertical-align: middle;
+  color: rgba(212, 214, 219, 1);
+  .chat-loading__circular {
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .chat-loading__circular circle {
+    stroke: currentColor;
+    stroke-width: 7;
+    stroke-linecap: round;
+    animation: chatLoadingCircle 1080ms ease-in-out infinite;
+  }
+}
